@@ -19,8 +19,8 @@ public class alert {
 		System.out.println(a.getText());
 		a.accept();
 		Thread.sleep(5000);
-		driver.switchTo().frame();
 		WebElement video = driver.findElement(By.xpath("//div[@id='transparentInner']"));
+		driver.switchTo().frame(video);
 		driver.manage().window().maximize();
 }
 }	
