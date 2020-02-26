@@ -1,13 +1,19 @@
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import com.google.common.io.Files;
+
 public class findelements {
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, IOException {
 		System.setProperty("webdriver.chrome.driver", ".\\Software\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
@@ -23,13 +29,20 @@ public class findelements {
 			System.err.println (item);
 			a.moveToElement(menuName).build().perform();
 			Thread.sleep(2000);
+			screenshot (driver,item);
 			List<WebElement> submenus = driver.findElements(By.xpath("//span[contains(., '"+ item +"')]/parent::li/descendant::ul[@class='taxonslist']/li"));
 			for (WebElement names : submenus) {
 				System.out.println(names.getText());
 		
 			}
-		
-		}
+		}	
+	}
+				
+		public static void screenshot(WebDriver driver, String name) throws IOException {
+			TakesScreenshot ts = (TakesScreenshot) driver;
+			File screenshot = ts.getScreenshotAs(OutputType.FILE);
+			File screensave = new File("./screenshot/" +name +".png");
+			Files.copy(screenshot, screensave);
 			
 	}
 	//	WebElement sale = driver.findElement(By.xpath("//li[@class='topnav_item saleunit']"));
