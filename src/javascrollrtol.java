@@ -14,10 +14,12 @@ public class javascrollrtol {
 		WebElement adv = driver.findElement(By.xpath ("//button[@class='_2AkmmA _29YdH8']"));
 		adv.click();
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollBy(300,0)");
+		js.executeScript("window.scrollTo(document.body.scrollWidth,0)");
+		//js.executeScript("window.scrollBy(300,0)");
 		Thread.sleep(2000);
-		js.executeScript("window.scrollBy(-100,0)");
+		//js.executeScript("window.scrollBy(-100,0)");
 		//do for window.scrollTo(document.body.scrollWidth,0)
+		js.executeScript("window.scrollTo(-document.body.scrollWidth,0)");
 		
 		
 }
