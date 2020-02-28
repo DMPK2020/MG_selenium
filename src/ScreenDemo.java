@@ -28,4 +28,9 @@ public class ScreenDemo {
 		Files.copy(screenshot, screensave);
 		
 	}
+	
+	
+public String readData {	
+	
+}
 }
